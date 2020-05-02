@@ -1,0 +1,14 @@
+Bienvenido a las Instrucciones de YeroTop.
+Este juego, es un juego de supervivencia donde deberás arriesgar tu vida para poder llegar hasta el final.
+
+Contarás con un total de 200 vidas que irás perdiendo a medida que vayas moviendote, dónde podrás recolectar pociones para poder recuperarlas. En este mismo también contarás con dificultades los cuales son los temibles enemigos que podrán perseguirte o mantener una secuencia simplemente. 
+
+Podrás moverte con el teclado númerico del teclado, y hacer uso de los Items meiante las teclas "Q" y "S"
+
+Si tu vida llega a 0, has perdido.
+
+El objetivo es recolectar una llave para abrir la puerta de la salida, esta se enconde debajo de las piedras, pero !OJO¡, deberas romperarla con tu Pico, si este no es lo suficiente fuerte, deberas mejorarlo.
+
+!MUCHA SUERTE¡
+
+Presione G para volver
