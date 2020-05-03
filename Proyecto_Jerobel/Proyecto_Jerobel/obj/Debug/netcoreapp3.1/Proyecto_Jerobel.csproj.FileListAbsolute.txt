@@ -9,3 +9,14 @@ C:\Users\jmamo\OneDrive\Escritorio\Proyecto_Jerobel\Proyecto_Jerobel\bin\Debug\n
 C:\Users\jmamo\OneDrive\Escritorio\Proyecto_Jerobel\Proyecto_Jerobel\obj\Debug\netcoreapp3.1\Proyecto_Jerobel.dll
 C:\Users\jmamo\OneDrive\Escritorio\Proyecto_Jerobel\Proyecto_Jerobel\obj\Debug\netcoreapp3.1\Proyecto_Jerobel.pdb
 C:\Users\jmamo\OneDrive\Escritorio\Proyecto_Jerobel\Proyecto_Jerobel\obj\Debug\netcoreapp3.1\Proyecto_Jerobel.csprojAssemblyReference.cache
+C:\Users\jmamo\OneDrive\Escritorio\ETS_Proyecto_Jerobel\P_Jerobel_Marrero\Proyecto_Jerobel\Proyecto_Jerobel\bin\Debug\netcoreapp3.1\Proyecto_Jerobel.exe
+C:\Users\jmamo\OneDrive\Escritorio\ETS_Proyecto_Jerobel\P_Jerobel_Marrero\Proyecto_Jerobel\Proyecto_Jerobel\bin\Debug\netcoreapp3.1\Proyecto_Jerobel.deps.json
+C:\Users\jmamo\OneDrive\Escritorio\ETS_Proyecto_Jerobel\P_Jerobel_Marrero\Proyecto_Jerobel\Proyecto_Jerobel\bin\Debug\netcoreapp3.1\Proyecto_Jerobel.runtimeconfig.json
+C:\Users\jmamo\OneDrive\Escritorio\ETS_Proyecto_Jerobel\P_Jerobel_Marrero\Proyecto_Jerobel\Proyecto_Jerobel\bin\Debug\netcoreapp3.1\Proyecto_Jerobel.runtimeconfig.dev.json
+C:\Users\jmamo\OneDrive\Escritorio\ETS_Proyecto_Jerobel\P_Jerobel_Marrero\Proyecto_Jerobel\Proyecto_Jerobel\bin\Debug\netcoreapp3.1\Proyecto_Jerobel.dll
+C:\Users\jmamo\OneDrive\Escritorio\ETS_Proyecto_Jerobel\P_Jerobel_Marrero\Proyecto_Jerobel\Proyecto_Jerobel\bin\Debug\netcoreapp3.1\Proyecto_Jerobel.pdb
+C:\Users\jmamo\OneDrive\Escritorio\ETS_Proyecto_Jerobel\P_Jerobel_Marrero\Proyecto_Jerobel\Proyecto_Jerobel\obj\Debug\netcoreapp3.1\Proyecto_Jerobel.csprojAssemblyReference.cache
+C:\Users\jmamo\OneDrive\Escritorio\ETS_Proyecto_Jerobel\P_Jerobel_Marrero\Proyecto_Jerobel\Proyecto_Jerobel\obj\Debug\netcoreapp3.1\Proyecto_Jerobel.AssemblyInfoInputs.cache
+C:\Users\jmamo\OneDrive\Escritorio\ETS_Proyecto_Jerobel\P_Jerobel_Marrero\Proyecto_Jerobel\Proyecto_Jerobel\obj\Debug\netcoreapp3.1\Proyecto_Jerobel.AssemblyInfo.cs
+C:\Users\jmamo\OneDrive\Escritorio\ETS_Proyecto_Jerobel\P_Jerobel_Marrero\Proyecto_Jerobel\Proyecto_Jerobel\obj\Debug\netcoreapp3.1\Proyecto_Jerobel.dll
+C:\Users\jmamo\OneDrive\Escritorio\ETS_Proyecto_Jerobel\P_Jerobel_Marrero\Proyecto_Jerobel\Proyecto_Jerobel\obj\Debug\netcoreapp3.1\Proyecto_Jerobel.pdb

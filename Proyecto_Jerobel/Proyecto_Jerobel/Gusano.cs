@@ -61,7 +61,7 @@ namespace Proyecto_Jerobel
 
             if (Jugador1.x == this.x && Jugador1.y == this.y)
             {
-                Jugador1.vidas = Jugador1.vidas - 10;
+                Jugador1.life = Jugador1.life - 10;
             }
 
             mapa.celdas[x, y].enemigo = this;

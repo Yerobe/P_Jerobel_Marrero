@@ -8,13 +8,13 @@ namespace Proyecto_Jerobel
     {
         public Celda[,] celdas;
         public int x, y;
-        public int vidas;
+        public int life;
         public int anteriorx, anteriory;
         public int pico;
-        public int llaves;
-        Inventario mochila;
-        public int monedas;
-        public int diamantes;
+        public int key;
+        Inventario bagpack;
+        public int coins;
+        public int diamond;
         
 
         public Tablero mapa;
@@ -26,13 +26,13 @@ namespace Proyecto_Jerobel
             x = 75; //POSICION DEL JUGADOR X
             y = 75; // POSICIONES DEL JUGADOR Y
             this.mapa = t; // DECLARACIÓN DEL TABLERO
-            vidas = 300; // VIDAS DEL JUGADOR 
+            life = 300; // VIDAS DEL JUGADOR 
             pico = posibilidad; // DUREZA DEL PICO
-            llaves = 0;
-            monedas = 200; // MONEDAS DEL JUGADOR
-            diamantes = 50;
+            key = 0;
+            coins = 200; // MONEDAS DEL JUGADOR
+            diamond = 50;
 
-            mochila = new Inventario();
+            bagpack = new Inventario();
 
         }
 
@@ -46,7 +46,7 @@ namespace Proyecto_Jerobel
 
         public void Display()
         {
-            mochila.Display();
+            bagpack.Display();
             Console.SetCursorPosition(25, 15);
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Red; // COLOR DEL JUGADOR
@@ -133,7 +133,7 @@ namespace Proyecto_Jerobel
                     ==============================================
                      
                       */
-
+                      
 
         public void Informacion()
         {
@@ -147,17 +147,17 @@ namespace Proyecto_Jerobel
             Console.ForegroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Red;
             Console.SetCursorPosition(52, 5);
-            Console.WriteLine("Vidas " + vidas + " "); // IMPRIME LAS VIDAS ACTUALES
+            Console.WriteLine("Vidas " + life + " "); // IMPRIME LAS VIDAS ACTUALES
             Console.ForegroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.White;
             Console.SetCursorPosition(52, 6);
             Console.WriteLine("Dureza del Pico " + pico + " "); // IMPRIME LA DUREZA DEL PICO ACTUAL
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.SetCursorPosition(104, 1);
-            Console.WriteLine("Monedas : " + monedas); // IMPRIME LA CANTIDAD DE LAS MONEDAS
+            Console.WriteLine("Monedas : " + coins); // IMPRIME LA CANTIDAD DE LAS MONEDAS
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.SetCursorPosition(104, 2);
-            Console.WriteLine("Diamantes : " + diamantes); // IMPRIME LA CANTIDAD DE LOS DIAMANTES
+            Console.WriteLine("Diamantes : " + diamond); // IMPRIME LA CANTIDAD DE LOS DIAMANTES
         }
 
 
@@ -183,7 +183,7 @@ namespace Proyecto_Jerobel
                 {
                     bool puedecoger;
 
-                    puedecoger = mochila.TryAdd(mapa.celdas[x, y].objeto); // METO ITEM EN LA MOCHILA
+                    puedecoger = bagpack.TryAdd(mapa.celdas[x, y].objeto); // METO ITEM EN LA MOCHILA
                     if (puedecoger)
                     {
                         mapa.celdas[x, y].objeto = null; // QUITA EL SUELO
@@ -197,7 +197,7 @@ namespace Proyecto_Jerobel
         {
 
 
-            mochila.UseItem(this);
+            bagpack.UseItem(this);
 
 
         }
@@ -208,13 +208,13 @@ namespace Proyecto_Jerobel
            }*/
         public void selectPreviousItem()
         {
-            mochila.ItemIndex = Math.Max(mochila.ItemIndex - 1, -1);
+            bagpack.ItemIndex = Math.Max(bagpack.ItemIndex - 1, -1);
 
         }
 
         public void selectNextItem()
         {
-            mochila.ItemIndex = Math.Min(mochila.items.Count - 1, mochila.ItemIndex + 1); // ATENCION AL FINAL
+            bagpack.ItemIndex = Math.Min(bagpack.items.Count - 1, bagpack.ItemIndex + 1); // ATENCION AL FINAL
         }
 
 
@@ -232,13 +232,13 @@ namespace Proyecto_Jerobel
 
         public void RompeRocas() // JUGADIR ENCIMA DE UNA ROCA
         {
-            if (mapa.celdas[x, y].valor == TipoCelda.Rock && pico >= mapa.celdas[x, y].fuerzaRock && mochila.cantidad_objetos < 10)
+            if (mapa.celdas[x, y].valor == TipoCelda.Rock && pico >= mapa.celdas[x, y].fuerzaRock && bagpack.cantidad_objetos < 10)
             {
                 pico = pico - mapa.celdas[x, y].fuerzaRock; // ROTURA DEL PICO AL ROMPER UNA PIEDRA
 
                 if (mapa.celdas[x, y].objeto is Llave)
                 {
-                    mochila.TryAdd(mapa.celdas[x, y].objeto);
+                    bagpack.TryAdd(mapa.celdas[x, y].objeto);
                 }
                 mapa.celdas[x, y].valor = TipoCelda.Floor;
             }
@@ -258,20 +258,20 @@ namespace Proyecto_Jerobel
 
             if (x != anteriorx && calculo == 1) // DISMINUCIÓN DE VIDAS
             {
-                vidas = vidas - 1;
+                life = life - 1;
                 calculo = calculo - 1;
             }
             if (y != anteriory && calculo == 1) // DISMINUCIÓN DE VIDAS
             {
-                vidas = vidas - 1;
+                life = life - 1;
                 calculo = calculo - 1;
             }
             if (mapa.celdas[x, y].valor == TipoCelda.Heart && mapa.celdas[x, y].IsHeart()) // CONDICIÓN DONDE DEBE SER CASILLA CORAZÓN Y JUGADOR DEBE ESTAR ENCIMA
             {
                 mapa.celdas[x, y].valor = TipoCelda.Floor; // RECOGE CORAZON Y DEJA LA CASILLA EN FLOOR
-                vidas = vidas + 10; // AUMENTO DE VIDA
+                life = life + 10; // AUMENTO DE VIDA
             }
-            if (vidas <= 0) // MUERTE DEL JUGADOR
+            if (life <= 0) // MUERTE DEL JUGADOR
             {
                 Program.state = 2;
             }
@@ -292,7 +292,7 @@ namespace Proyecto_Jerobel
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.SetCursorPosition(52, 8);
                     Console.WriteLine("La dureza de la roca es de " + mapa.celdas[x, y].fuerzaRock + " si deseas romperla presione P"); // IMPRIME LAS DUREZA DE LA ROCA ANTERIOR ANALIZADA
-                    vidas++;
+                    life++;
                 }
 
             }
@@ -334,158 +334,169 @@ namespace Proyecto_Jerobel
 
                     int g = 0;
 
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.SetCursorPosition(71, 4);
-                    Console.WriteLine("BIENVENIDO AL HERRERO");
+                    Interaction();
 
-                    Console.SetCursorPosition(55, 8);
-                    Console.WriteLine("Este es el puesto del Herrero, aquí podrás forjar tu Pico");
+                    g = MapaAsteriscos(g);
 
-                    Console.SetCursorPosition(55, 10);
-                    Console.WriteLine("Altualmente cuentas con:");
+                    Price();
 
-                    Console.SetCursorPosition(57, 12);
-                    Console.WriteLine("Monedas : " + monedas + "   ");
-
-                    Console.SetCursorPosition(57, 13);
-                    Console.WriteLine("Diamantes : " + diamantes + "   ");
-
-                    Console.SetCursorPosition(57, 25);
-                    Console.WriteLine("Si deseas salir, presione E");
-
-                    /*
-                     
-                    ==============================================
-                    = FOR PARA IMPRIMIR CUADRADO CON ASTERISCOS  =
-                    ==============================================
-                     
-                      */
-                    for (int j = 0; j < 2; j++)
-                    {
-                        for (int i = 0; i < 35; i++)
-                        {
-                            Console.SetCursorPosition(65 + i, 2 + g);
-
-                            Console.Write("*");
-                        }
-                        g = g + 4;
-                    }
-
-
-                    g = 0;
-
-                    for (int j = 0; j < 2; j++)
-                    {
-                        for (int i = 0; i < 4; i++)
-                        {
-
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.SetCursorPosition(65 + g, 3 + i);
-                            Console.WriteLine("*");
-
-
-                        }
-                        g = g + 34;
-                    }
-
-                    Console.SetCursorPosition(55, 15);
-                    Console.WriteLine("1) Mejorar el Pico +10 equivale a 5 Diamantes y 20 Monedas");
-                    Console.SetCursorPosition(55, 16);
-                    Console.WriteLine("2) Mejorar el Pico +30 equivale a 12 Diamantes y 30 Monedas");
-                    Console.SetCursorPosition(55, 17);
-                    Console.WriteLine("3) Mejorar el Pico +50 equivale a 30 Diamantes y 50 Monedas");
-
-                    ConsoleKeyInfo opcion;
-                    opcion = Console.ReadKey(true);
-
-
-                    int o_diamantes = 0;
-                    int o_monedas = 0;
-
-                    switch (opcion.Key) // MOVIMIENTO DEL JUGADOR
-                    {
-
-                        case ConsoleKey.E: // MOVIMIENTO HACIA ARRIBA
-                            salirherrero = false;
-                            for (int x = 52; x < 115; x++)
-                            {
-                                for (int y = 1; y < 27; y++)
-                                {
-                                    Console.SetCursorPosition(x, y);
-                                    Console.WriteLine(" ");
-                                }
-                            }
-                            break;
-                        case ConsoleKey.D1:
-                            o_monedas = monedas - 20;
-                            o_diamantes = diamantes - 5;
-                            if (diamantes >= 5 && monedas >= 20 && o_monedas>= 0 && o_diamantes >= 0)
-                            {
-
-                                pico = pico + 10;
-                                diamantes = diamantes - 5;
-                                monedas = monedas - 20;
-                                Console.SetCursorPosition(55, 20);
-                                Console.ForegroundColor = ConsoleColor.Black;
-                                Console.WriteLine("                                ");
-                            }
-                            else
-                            {
-                                Console.SetCursorPosition(55, 20);
-                                Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("No tienes suficientes fondos");
-                            }
-                            break;
-                        case ConsoleKey.D2:
-                            o_monedas = monedas - 30;
-                            o_diamantes = diamantes - 12;
-                            if (diamantes >= 12 && monedas >= 30 && o_monedas >= 0 && o_diamantes >= 0)
-                            {
-                                pico = pico + 30;
-                                diamantes = diamantes - 5;
-                                monedas = monedas - 30;
-                                Console.SetCursorPosition(55, 20);
-                                Console.ForegroundColor = ConsoleColor.Black;
-                                Console.WriteLine("                                 ");
-                            }
-                            else
-                            {
-                                Console.SetCursorPosition(55, 20);
-                                Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("No tienes suficientes fondos");
-                            }
-                            break;
-                        case ConsoleKey.D3:
-                            o_monedas = monedas - 50;
-                            o_diamantes = diamantes - 30;
-                            if (diamantes >= 30 && monedas >= 50 && o_monedas >= 0 && o_diamantes >= 0)
-                            {
-                                pico = pico + 50;
-                                diamantes = diamantes - 5;
-                                monedas = monedas - 50;
-                                Console.SetCursorPosition(55, 20);
-                                Console.ForegroundColor = ConsoleColor.Black;
-                                Console.WriteLine("                                ");
-                            }
-                            else
-                            {
-                                Console.SetCursorPosition(55, 20);
-                                Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("No tienes suficientes fondos");
-                            }
-                            break;
-                    }
-
-
-
-
-
-
-
-
+                    salirherrero = Shopping(salirherrero);
 
                 } while (salirherrero == true); // CONDICIÓN PARA SALIR DE LA INTERACCION CON EL HERRERO
             }
+        }
+
+
+        // MÉTODOS EXTERNOS
+
+        private static void Price()
+        {
+            Console.SetCursorPosition(55, 15);
+            Console.WriteLine("1) Mejorar el Pico +10 equivale a 5 Diamantes y 20 Monedas");
+            Console.SetCursorPosition(55, 16);
+            Console.WriteLine("2) Mejorar el Pico +30 equivale a 12 Diamantes y 30 Monedas");
+            Console.SetCursorPosition(55, 17);
+            Console.WriteLine("3) Mejorar el Pico +50 equivale a 30 Diamantes y 50 Monedas");
+        }
+
+        private bool Shopping(bool salirherrero)
+        {
+            ConsoleKeyInfo opcion = Console.ReadKey(true);
+
+
+            int o_diamantes = 0;
+            int o_monedas = 0;
+
+            switch (opcion.Key) // MOVIMIENTO DEL JUGADOR
+            {
+
+                case ConsoleKey.E: // MOVIMIENTO HACIA ARRIBA
+                    salirherrero = false;
+                    for (int x = 52; x < 115; x++)
+                    {
+                        for (int y = 1; y < 27; y++)
+                        {
+                            Console.SetCursorPosition(x, y);
+                            Console.WriteLine(" ");
+                        }
+                    }
+                    break;
+                case ConsoleKey.D1:
+                    o_monedas = coins - 20;
+                    o_diamantes = diamond - 5;
+                    if (diamond >= 5 && coins >= 20 && o_monedas >= 0 && o_diamantes >= 0)
+                    {
+
+                        pico = pico + 10;
+                        diamond = diamond - 5;
+                        coins = coins - 20;
+                        Console.SetCursorPosition(55, 20);
+                        Console.ForegroundColor = ConsoleColor.Black;
+                        Console.WriteLine("                                ");
+                    }
+                    else
+                    {
+                        Console.SetCursorPosition(55, 20);
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("No tienes suficientes fondos");
+                    }
+                    break;
+                case ConsoleKey.D2:
+                    o_monedas = coins - 30;
+                    o_diamantes = diamond - 12;
+                    if (diamond >= 12 && coins >= 30 && o_monedas >= 0 && o_diamantes >= 0)
+                    {
+                        pico = pico + 30;
+                        diamond = diamond - 5;
+                        coins = coins - 30;
+                        Console.SetCursorPosition(55, 20);
+                        Console.ForegroundColor = ConsoleColor.Black;
+                        Console.WriteLine("                                 ");
+                    }
+                    else
+                    {
+                        Console.SetCursorPosition(55, 20);
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("No tienes suficientes fondos");
+                    }
+                    break;
+                case ConsoleKey.D3:
+                    o_monedas = coins - 50;
+                    o_diamantes = diamond - 30;
+                    if (diamond >= 30 && coins >= 50 && o_monedas >= 0 && o_diamantes >= 0)
+                    {
+                        pico = pico + 50;
+                        diamond = diamond - 5;
+                        coins = coins - 50;
+                        Console.SetCursorPosition(55, 20);
+                        Console.ForegroundColor = ConsoleColor.Black;
+                        Console.WriteLine("                                ");
+                    }
+                    else
+                    {
+                        Console.SetCursorPosition(55, 20);
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("No tienes suficientes fondos");
+                    }
+                    break;
+            }
+
+            return salirherrero;
+        }
+
+        private static int MapaAsteriscos(int g)
+        {
+            for (int j = 0; j < 2; j++)
+            {
+                for (int i = 0; i < 35; i++)
+                {
+                    Console.SetCursorPosition(65 + i, 2 + g);
+
+                    Console.Write("*");
+                }
+                g = g + 4;
+            }
+
+
+            g = 0;
+
+            for (int j = 0; j < 2; j++)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.SetCursorPosition(65 + g, 3 + i);
+                    Console.WriteLine("*");
+
+
+                }
+                g = g + 34;
+            }
+
+            return g;
+        }
+
+        private void Interaction()
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.SetCursorPosition(71, 4);
+            Console.WriteLine("BIENVENIDO AL HERRERO");
+
+            Console.SetCursorPosition(55, 8);
+            Console.WriteLine("Este es el puesto del Herrero, aquí podrás forjar tu Pico");
+
+            Console.SetCursorPosition(55, 10);
+            Console.WriteLine("Altualmente cuentas con:");
+
+            Console.SetCursorPosition(57, 12);
+            Console.WriteLine("Monedas : " + coins + "   ");
+
+            Console.SetCursorPosition(57, 13);
+            Console.WriteLine("Diamantes : " + diamond + "   ");
+
+            Console.SetCursorPosition(57, 25);
+            Console.WriteLine("Si deseas salir, presione E");
         }
 
 
@@ -566,11 +577,11 @@ namespace Proyecto_Jerobel
 
         public void NextLevel() // CONDICIONES CUANDO SE CAMBIA DE NIVEL
         {
-            if (mapa.celdas[x, y].valor == TipoCelda.Exit && mochila.cantidad_llaves == 1)
+            if (mapa.celdas[x, y].valor == TipoCelda.Exit && bagpack.cantidad_llaves == 1)
             {
                 Program.state = 1; // CAMBIO EN EL SWITCH DE PROGRAM
                 Program.dungeon++; // AUMENTA UN NIVEL DE MAZMORRAS
-                mochila.items.Clear(); // VACIA EL INVENTARIO
+                bagpack.items.Clear(); // VACIA EL INVENTARIO
                 Console.Clear(); // LIMPIA LA CONSOLA
 
             }

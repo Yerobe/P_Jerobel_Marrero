@@ -34,7 +34,7 @@ namespace Proyecto_Jerobel
                     {
                         case 3: //PANTALLA DE INICIO
                            
-                            
+                       
 
                             if (File.Exists("../../data/Inicio.txt"))
                             {
@@ -199,15 +199,15 @@ namespace Proyecto_Jerobel
                                 break;
                             case ConsoleKey.Enter: // ELIMINA EL ITEM DEL INVENTARIO
                                 Jugador1.UseItem();
-                                Jugador1.vidas++;
+                                Jugador1.life++;
                                 break;
                             case ConsoleKey.Q: // SELECCIONA UN ITEM ARRIBA
                                 Jugador1.selectPreviousItem();
-                                Jugador1.vidas++;
+                                Jugador1.life++;
                                 break;
                             case ConsoleKey.A:
                                 Jugador1.selectNextItem(); // SELECCIONA UN ITEM ABAJO
-                                Jugador1.vidas++;
+                                Jugador1.life++;
                                 break;
                             case ConsoleKey.B:
                                 state = 1;

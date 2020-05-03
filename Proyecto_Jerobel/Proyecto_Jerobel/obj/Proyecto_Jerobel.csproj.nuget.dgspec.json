@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jmamo\\OneDrive\\Escritorio\\Proyecto_Jerobel\\Proyecto_Jerobel\\Proyecto_Jerobel.csproj": {}
+    "C:\\Users\\jmamo\\OneDrive\\Escritorio\\ETS_Proyecto_Jerobel\\P_Jerobel_Marrero\\Proyecto_Jerobel\\Proyecto_Jerobel\\Proyecto_Jerobel.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jmamo\\OneDrive\\Escritorio\\Proyecto_Jerobel\\Proyecto_Jerobel\\Proyecto_Jerobel.csproj": {
+    "C:\\Users\\jmamo\\OneDrive\\Escritorio\\ETS_Proyecto_Jerobel\\P_Jerobel_Marrero\\Proyecto_Jerobel\\Proyecto_Jerobel\\Proyecto_Jerobel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jmamo\\OneDrive\\Escritorio\\Proyecto_Jerobel\\Proyecto_Jerobel\\Proyecto_Jerobel.csproj",
+        "projectUniqueName": "C:\\Users\\jmamo\\OneDrive\\Escritorio\\ETS_Proyecto_Jerobel\\P_Jerobel_Marrero\\Proyecto_Jerobel\\Proyecto_Jerobel\\Proyecto_Jerobel.csproj",
         "projectName": "Proyecto_Jerobel",
-        "projectPath": "C:\\Users\\jmamo\\OneDrive\\Escritorio\\Proyecto_Jerobel\\Proyecto_Jerobel\\Proyecto_Jerobel.csproj",
+        "projectPath": "C:\\Users\\jmamo\\OneDrive\\Escritorio\\ETS_Proyecto_Jerobel\\P_Jerobel_Marrero\\Proyecto_Jerobel\\Proyecto_Jerobel\\Proyecto_Jerobel.csproj",
         "packagesPath": "C:\\Users\\jmamo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jmamo\\OneDrive\\Escritorio\\Proyecto_Jerobel\\Proyecto_Jerobel\\obj\\",
+        "outputPath": "C:\\Users\\jmamo\\OneDrive\\Escritorio\\ETS_Proyecto_Jerobel\\P_Jerobel_Marrero\\Proyecto_Jerobel\\Proyecto_Jerobel\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jmamo\\AppData\\Roaming\\NuGet\\NuGet.Config",

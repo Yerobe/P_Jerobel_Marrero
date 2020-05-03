@@ -140,7 +140,7 @@ namespace Proyecto_Jerobel
 
                 if (objeto is Moneda)
                 {
-                    j.monedas = j.monedas + 10;
+                    j.coins = j.coins + 10;
                     this.Borra();
                     return true;
                 }
@@ -150,13 +150,13 @@ namespace Proyecto_Jerobel
                 }
                 if (objeto is Diamante)
                 {
-                    j.diamantes = j.diamantes + 1;
+                    j.diamond = j.diamond + 1;
                     this.Borra();
                     return true;
                 }
                 else
                 {
-                    j.vidas = j.vidas + 10;
+                    j.life = j.life + 10;
                     this.Borra();
                     return true;
                 }
