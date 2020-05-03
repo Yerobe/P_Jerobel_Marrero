@@ -15,8 +15,8 @@ namespace Proyecto_Jerobel
         Inventario bagpack;
         public int coins;
         public int diamond;
+        public int pasos;
         
-
         public Tablero mapa;
 
         public Jugador(Tablero t)
@@ -31,7 +31,6 @@ namespace Proyecto_Jerobel
             key = 0;
             coins = 200; // MONEDAS DEL JUGADOR
             diamond = 50;
-
             bagpack = new Inventario();
 
         }
@@ -54,6 +53,15 @@ namespace Proyecto_Jerobel
             Console.ForegroundColor = ConsoleColor.Black;
 
 
+        }
+
+        public void Inmortal()
+        {
+            while(pasos <= 5)
+            {
+                life = life + 1;
+            }
+            
         }
 
 

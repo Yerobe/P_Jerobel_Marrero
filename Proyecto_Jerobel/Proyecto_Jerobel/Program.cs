@@ -23,7 +23,6 @@ namespace Proyecto_Jerobel
 
             
 
-
             do // CONDICIOENS QUE FUNCIONARÁ COMO CAMBIO DE RONDAS
             {
                 TableroGeneral = new Tablero(); // DECLARACIÓN DE LA CLASE TABLERO
@@ -57,6 +56,8 @@ namespace Proyecto_Jerobel
                                 state = 4;
                                 Console.Clear();
                             }
+
+
                             break;
 
                         case 0: // CASO 1 = DURANTE PARTIDA
@@ -212,9 +213,12 @@ namespace Proyecto_Jerobel
                             case ConsoleKey.B:
                                 state = 1;
                                 break;
+                        case ConsoleKey.M:
+                            Jugador1.Inmortal();
+                            break;
 
 
-                        }
+                    }
 
                         Jugador1.CogeItem();
 
