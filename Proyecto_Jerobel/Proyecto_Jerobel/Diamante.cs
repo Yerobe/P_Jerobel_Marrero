@@ -8,10 +8,10 @@ namespace Proyecto_Jerobel
     {
         public override void Display()
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("DIAMANTE");
-            Console.ForegroundColor = ConsoleColor.White;
-            base.Display();
+            Console.ForegroundColor = ConsoleColor.Blue; // COLOR DE DIAMANTE
+            Console.Write("DIAMANTE"); // ESCRITUA POR PANTALLA
+            Console.ForegroundColor = ConsoleColor.White; // VOVLER COLOR
+            base.Display(); // DIBUJAR
         }
     }
 

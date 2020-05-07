@@ -24,38 +24,38 @@ namespace Proyecto_Jerobel
 
         }
 
-        public void Mover()
+        public void Move() //
         {
             int direccion;
             Random r = new Random();
 
 
             direccion = r.Next(4) + 1;
-            mapa.celdas[x, y].enemigo = null;
+            mapa.celdas[x, y].Enemi = null;
             switch (direccion)
             {
 
-                case 1:
-                    if (mapa.isSafe(x+1, y) == true && mapa.celdas[x + 1, y].isWalkable() == true)
+                case 1: // MOVIMIENTO DERECHA
+                    if (mapa.isSafe(x+1, y) == true && mapa.celdas[x + 1, y].isWalkable() == true) // CONDICIONALES DE SEGURIDAD
                     {
                         x++;
                     }
 
                     break;
-                case 2:
-                    if (mapa.isSafe(x-1, y) == true && mapa.celdas[x - 1, y].isWalkable() == true)
+                case 2: // MOVIMIENTO IZQUIERDA
+                    if (mapa.isSafe(x-1, y) == true && mapa.celdas[x - 1, y].isWalkable() == true) // CONDICIONALES DE SEGURIDAD
                     {
                         x--;
                     }
                     break;
-                case 3:
-                    if (mapa.isSafe(x, y+1) == true && mapa.celdas[x, y + 1].isWalkable() == true)
+                case 3: // MOVIMIENTO ARRIBA
+                    if (mapa.isSafe(x, y+1) == true && mapa.celdas[x, y + 1].isWalkable() == true) // CONDICIONALES DE SEGURIDAD
                     {
                         y++;
                     }
                     break;
-                case 4:
-                    if (mapa.isSafe(x, y-1) == true && mapa.celdas[x, y - 1].isWalkable() == true)
+                case 4: // MOVIMIENTO ABAJO
+                    if (mapa.isSafe(x, y-1) == true && mapa.celdas[x, y - 1].isWalkable() == true) // CONDICIONALES DE SEGURIDAD
                     {
                         y--;
                     }
@@ -63,11 +63,11 @@ namespace Proyecto_Jerobel
                     
                         break;
             }
-            if (Jugador1.x == this.x && Jugador1.y == this.y)
+            if (Jugador1.x == this.x && Jugador1.y == this.y) // SEGURIDAD A LA HORA DE CUANDO EL ENEMIGO ALCANCE AL JUGADOR
             {
                 Jugador1.life = Jugador1.life - 10;
             }
-            mapa.celdas[x, y].enemigo = this;
+            mapa.celdas[x, y].Enemi = this;
         }
 
     }

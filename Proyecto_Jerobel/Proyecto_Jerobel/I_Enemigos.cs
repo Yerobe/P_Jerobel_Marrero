@@ -13,6 +13,6 @@ namespace Proyecto_Jerobel
 
 
         void Display();
-        void Mover();
+        void Move();
     }
 }

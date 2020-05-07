@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Proyecto_Jerobel
 {
+
     public class Jugador
     {
         public Celda[,] celdas;
@@ -16,7 +17,7 @@ namespace Proyecto_Jerobel
         public int coins;
         public int diamond;
         public int pasos;
-        
+
         public Tablero mapa;
 
         public Jugador(Tablero t)
@@ -57,11 +58,11 @@ namespace Proyecto_Jerobel
 
         public void Inmortal()
         {
-            while(pasos <= 5)
+            while (pasos <= 5)
             {
                 life = life + 1;
             }
-            
+
         }
 
 
@@ -74,18 +75,18 @@ namespace Proyecto_Jerobel
             anteriorx = x;
             anteriory = y;
 
-            if (nuevax >= 0 && nuevax < mapa.anchura) // LIMITACIÓN EN X
+            if ((nuevax >= 0) && (nuevax < mapa.anchura)) // LIMITACIÓN EN X
             {
                 x = nuevax;
-                if (mapa.celdas[x, y].valor == TipoCelda.Wall) // LIMITACIÓN DE MUROS EN POSCIÓN X
+                if ((mapa.celdas[x, y].Valor == TipoCelda.Wall)) // LIMITACIÓN DE MUROS EN POSCIÓN X
                 {
                     x = nuevax - incX;
                 }
             }
-            if (nuevay >= 0 && nuevay < mapa.altura) // LIMITACIÓN EN Y
+            if ((nuevay >= 0) && (nuevay < mapa.altura)) // LIMITACIÓN EN Y
             {
                 y = nuevay;
-                if (mapa.celdas[x, y].valor == TipoCelda.Wall) // LIMITACIÓN DE MUROS EN POSICIÓN Y
+                if (mapa.celdas[x, y].Valor == TipoCelda.Wall) // LIMITACIÓN DE MUROS EN POSICIÓN Y
                 {
                     y = nuevay - incY;
                 }
@@ -141,7 +142,7 @@ namespace Proyecto_Jerobel
                     ==============================================
                      
                       */
-                      
+
 
         public void Informacion()
         {
@@ -185,16 +186,16 @@ namespace Proyecto_Jerobel
 
         public void CogeItem()
         {
-            if (!(mapa.celdas[x, y].objeto is Llave))
+            if (!(mapa.celdas[x, y].objectt is Llave))
             {
-                if (mapa.celdas[x, y].objeto != null)
+                if (mapa.celdas[x, y].objectt != null)
                 {
                     bool puedecoger;
 
-                    puedecoger = bagpack.TryAdd(mapa.celdas[x, y].objeto); // METO ITEM EN LA MOCHILA
+                    puedecoger = bagpack.TryAdd(mapa.celdas[x, y].objectt); // METO ITEM EN LA MOCHILA
                     if (puedecoger)
                     {
-                        mapa.celdas[x, y].objeto = null; // QUITA EL SUELO
+                        mapa.celdas[x, y].objectt = null; // QUITA EL SUELO
                     }
 
                 }
@@ -240,15 +241,15 @@ namespace Proyecto_Jerobel
 
         public void RompeRocas() // JUGADIR ENCIMA DE UNA ROCA
         {
-            if (mapa.celdas[x, y].valor == TipoCelda.Rock && pico >= mapa.celdas[x, y].fuerzaRock && bagpack.cantidad_objetos < 10)
+            if (mapa.celdas[x, y].Valor == TipoCelda.Rock && pico >= mapa.celdas[x, y].ForceRock && bagpack.cantidad_objetos < 10)
             {
-                pico = pico - mapa.celdas[x, y].fuerzaRock; // ROTURA DEL PICO AL ROMPER UNA PIEDRA
+                pico = pico - mapa.celdas[x, y].ForceRock; // ROTURA DEL PICO AL ROMPER UNA PIEDRA
 
-                if (mapa.celdas[x, y].objeto is Llave)
+                if (mapa.celdas[x, y].objectt is Llave)
                 {
-                    bagpack.TryAdd(mapa.celdas[x, y].objeto);
+                    bagpack.TryAdd(mapa.celdas[x, y].objectt);
                 }
-                mapa.celdas[x, y].valor = TipoCelda.Floor;
+                mapa.celdas[x, y].Valor = TipoCelda.Floor;
             }
             else
             {
@@ -274,9 +275,9 @@ namespace Proyecto_Jerobel
                 life = life - 1;
                 calculo = calculo - 1;
             }
-            if (mapa.celdas[x, y].valor == TipoCelda.Heart && mapa.celdas[x, y].IsHeart()) // CONDICIÓN DONDE DEBE SER CASILLA CORAZÓN Y JUGADOR DEBE ESTAR ENCIMA
+            if (mapa.celdas[x, y].Valor == TipoCelda.Heart && mapa.celdas[x, y].IsHeart()) // CONDICIÓN DONDE DEBE SER CASILLA CORAZÓN Y JUGADOR DEBE ESTAR ENCIMA
             {
-                mapa.celdas[x, y].valor = TipoCelda.Floor; // RECOGE CORAZON Y DEJA LA CASILLA EN FLOOR
+                mapa.celdas[x, y].Valor = TipoCelda.Floor; // RECOGE CORAZON Y DEJA LA CASILLA EN FLOOR
                 life = life + 10; // AUMENTO DE VIDA
             }
             if (life <= 0) // MUERTE DEL JUGADOR
@@ -288,7 +289,7 @@ namespace Proyecto_Jerobel
 
         public void RockDrop() // MÉTODO CUANDO LAS ROCAS SON ROTAS
         {
-            if (mapa.celdas[x, y].valor == TipoCelda.Rock && mapa.celdas[x, y].IsRock()) // CONDICIÓN DONDE DEBE SER CASILLA CORAZÓN Y JUGADOR DEBE ESTAR ENCIMA
+            if (mapa.celdas[x, y].Valor == TipoCelda.Rock && mapa.celdas[x, y].IsRock()) // CONDICIÓN DONDE DEBE SER CASILLA CORAZÓN Y JUGADOR DEBE ESTAR ENCIMA
             {
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.SetCursorPosition(52, 7);
@@ -299,12 +300,12 @@ namespace Proyecto_Jerobel
                 {
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.SetCursorPosition(52, 8);
-                    Console.WriteLine("La dureza de la roca es de " + mapa.celdas[x, y].fuerzaRock + " si deseas romperla presione P"); // IMPRIME LAS DUREZA DE LA ROCA ANTERIOR ANALIZADA
+                    Console.WriteLine("La dureza de la roca es de " + mapa.celdas[x, y].ForceRock + " si deseas romperla presione P"); // IMPRIME LAS DUREZA DE LA ROCA ANTERIOR ANALIZADA
                     life++;
                 }
 
             }
-            if (mapa.celdas[x, y].valor != TipoCelda.Rock) // LIMPIEZA DEL TEXTO POR CONSOLA DE LAS ROCAS
+            if (mapa.celdas[x, y].Valor != TipoCelda.Rock) // LIMPIEZA DEL TEXTO POR CONSOLA DE LAS ROCAS
             {
                 Console.ForegroundColor = ConsoleColor.Black;
                 Console.SetCursorPosition(52, 7);
@@ -315,13 +316,13 @@ namespace Proyecto_Jerobel
                 Console.WriteLine("                           ");
             }
         }
-       
 
 
-        public void I_am_a_blacksmith()
+
+        public void IamBlackSmith()
         {
             Boolean salirherrero = true;
-            if (mapa.celdas[x, y].valor == TipoCelda.Blacksmith && mapa.celdas[x, y].IsBlacksmith())
+            if (mapa.celdas[x, y].Valor == TipoCelda.Blacksmith && mapa.celdas[x, y].IsBlacksmith())
             {
                 for (int x = 52; x < 119; x++)
                 {
@@ -585,7 +586,7 @@ namespace Proyecto_Jerobel
 
         public void NextLevel() // CONDICIONES CUANDO SE CAMBIA DE NIVEL
         {
-            if (mapa.celdas[x, y].valor == TipoCelda.Exit && bagpack.cantidad_llaves == 1)
+            if (mapa.celdas[x, y].Valor == TipoCelda.Exit && bagpack.cantidad_llaves == 1)
             {
                 Program.state = 1; // CAMBIO EN EL SWITCH DE PROGRAM
                 Program.dungeon++; // AUMENTA UN NIVEL DE MAZMORRAS
@@ -597,11 +598,11 @@ namespace Proyecto_Jerobel
 
 
 
-        
 
-       
 
-       
+
+
+
 
 
 

@@ -7,7 +7,7 @@ namespace Proyecto_Jerobel
     public class EnemiGenerator
     {
 
-        public List <I_Enemigos> Enemigos;
+        public List <I_Enemigos> Enemigos; // ARRAY_LIST DE ENEMIGOS
         public Tablero mapa = new Tablero();
         public Jugador Jugador1;
         public bool slenderman;
@@ -25,7 +25,7 @@ namespace Proyecto_Jerobel
         {
             Random r = new Random();
 
-            for (int i = 0; i < quantity; i++)
+            for (int i = 0; i < quantity; i++) // CONDICIONAL DE CANTIDAD DE ENEMIGOS GENERADOS
             {
 
                 if (r.Next(10) < 5)
@@ -40,7 +40,7 @@ namespace Proyecto_Jerobel
 
             }
 
-            for(int i = 0; i < quantity2; i++)
+            for(int i = 0; i < quantity2; i++) // GENERADOR INDEPENDIENTE PARA LOS ENEMIGOS SLENDERMAN
             {
                 Enemigos.Add(new Slenderman(Jugador1));
             }
@@ -49,7 +49,7 @@ namespace Proyecto_Jerobel
             
 
 
-        public void DisplayEnemy()
+        public void DisplayEnemy() // DIBUJAR ENEMIGOS
         {
             Random r = new Random();
 
@@ -60,14 +60,14 @@ namespace Proyecto_Jerobel
                 do
                 {
 
-                    x = r.Next(this.mapa.celdas.GetLength(0));
-                    y = r.Next(this.mapa.celdas.GetLength(1));
+                    x = r.Next(this.mapa.celdas.GetLength(0)); // POSICION X ALEATORIA
+                    y = r.Next(this.mapa.celdas.GetLength(1)); // POSICION Y ALEATORIA
 
 
-                } while (mapa.celdas[x, y].valor != TipoCelda.Floor || mapa.celdas[x, y].enemigo != null);
+                } while (mapa.celdas[x, y].Valor != TipoCelda.Floor || mapa.celdas[x, y].Enemi != null);
 
 
-                mapa.celdas[x, y].enemigo = Enemigos[i];
+                mapa.celdas[x, y].Enemi = Enemigos[i];
 
                 Enemigos[i].x = x;
                 Enemigos[i].y = y;

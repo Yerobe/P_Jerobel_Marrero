@@ -9,13 +9,13 @@ namespace Proyecto_Jerobel
         static Jugador Jugador1;
         public static int state; // ESTADO QUE DECIDIRÁ EN QUE MODO NOS ENCONTRAMOS
         public static int dungeon; // NUMERO DE DUNGEON ACTUAL
-        public static Golem golem;
-        public static Gusano gusano;
-        public static EnemiGenerator GeneradorEnemy;
+        public static Golem golem;  // DECLARACION DEL ENEMIGO GOLEM
+        public static Gusano gusano; // DECLARACION DEL ENEMIGO GUSANO
+        public static EnemiGenerator GeneradorEnemy; // GENERADOR DE ENEMIGOS
         public static void Main(string[] args)
         {
-            state = 3;
-            dungeon = 1;
+            state = 3; // ESTADO QUE DECIDIRÁ LA PARTIDA
+            dungeon = 1; // NÚMERO DEL NIVEL EN EL QUE NOS ENCONTRAMOS
             Boolean ejecutado = false; // BOOLEAN QUE FUNCIONARÁ COMO DESENCADENANTE QUE AL REPETIR PARTIDA, SE EJECUTE EL STATE 0 Y HAGA EL RANDOMWALK
 
 
@@ -35,7 +35,7 @@ namespace Proyecto_Jerobel
                            
                        
 
-                            if (File.Exists("../../data/Inicio.txt"))
+                            if (File.Exists("../../data/Inicio.txt")) // LECTURA DE LA PANTALLA DE INICIO
                             {
                                 StreamReader archivo;
                                 String contenido;
@@ -46,12 +46,12 @@ namespace Proyecto_Jerobel
                             }
 
                             opcion = Console.ReadKey(true); // LECTURA POR TECLADO
-                            if (opcion.Key == ConsoleKey.G)
+                            if (opcion.Key == ConsoleKey.G) // OPCION = COMIENZO DEL JUEGO
                             {
                                 state = 0;
                                 Console.Clear();
                             }
-                            if (opcion.Key == ConsoleKey.I)
+                            if (opcion.Key == ConsoleKey.I) // OPCION = INFORMACION DEL JUEGO
                             {
                                 state = 4;
                                 Console.Clear();
@@ -94,7 +94,7 @@ namespace Proyecto_Jerobel
                             Console.ForegroundColor = ConsoleColor.White;
                             
 
-                            if (File.Exists("../../data/GameOver.txt"))
+                            if (File.Exists("../../data/GameOver.txt")) // PANTALLA DE GAMEOVER
                             {
                                 StreamReader archivo;
                                 String contenido;
@@ -156,7 +156,7 @@ namespace Proyecto_Jerobel
                         Jugador1.Display(); // DIBUJA JUGADOR
                         Jugador1.Vidas(); // CONTROLA LAS VIDAS DEL JUGADOR
                         Jugador1.RockDrop(); // CUANDO JUGADOR ESTÁ ENCIMA DE UNA ROCA
-                        Jugador1.I_am_a_blacksmith(); // CUANDO JUGADOR ESTÁ ENCIMA DE UN HERRERO
+                        Jugador1.IamBlackSmith(); // CUANDO JUGADOR ESTÁ ENCIMA DE UN HERRERO
                     
                         Jugador1.Informacion(); // DIBUJA LA INFORMACIÓN DEL JUGADOR
                         Jugador1.NextLevel(); // CAMBIA EL STATE CUANDO ENCUENTRA SALIDA
@@ -171,28 +171,34 @@ namespace Proyecto_Jerobel
                         switch (opcion.Key) // MOVIMIENTO DEL JUGADOR
                         {
 
-                            case ConsoleKey.NumPad8: // MOVIMIENTO HACIA ARRIBA
+                            case ConsoleKey.NumPad8: // MOVIMIENTO HACIA ARRIBA.
                                 Jugador1.MoveUp();
                                 break;
-                            case ConsoleKey.NumPad2: // MOVIMIENTO HACIA ABAJO
+
+                            case ConsoleKey.NumPad2: // MOVIMIENTO HACIA ABAJO.
                                 Jugador1.MoveDown();
                                 break;
-                            case ConsoleKey.NumPad4: // MOVIMIENTO HACIA LA IZQUIERDA
+
+                            case ConsoleKey.NumPad4: // MOVIMIENTO HACIA LA IZQUIERDA.
                                 Jugador1.MoveLeft();
                                 break;
-                            case ConsoleKey.NumPad6: // MOVIMIENTO HACIA LA DERECHA
+
+                            case ConsoleKey.NumPad6: // MOVIMIENTO HACIA LA DERECHA.
                                 Jugador1.MoveRight();
                                 break;
-                            case ConsoleKey.NumPad7: // MOVIMIENTO HACIA LA DIAGONAL SUPERIOR IZQUIERDA
+
+                            case ConsoleKey.NumPad7: // MOVIMIENTO HACIA LA DIAGONAL SUPERIOR IZQUIERDA.
                                 Jugador1.MoveUpLeft();
                                 break;
-                            case ConsoleKey.NumPad9: // MOVIMIENTO HACIA LA DIAGONAL SUPERIOR DERECHA
+
+                            case ConsoleKey.NumPad9: // MOVIMIENTO HACIA LA DIAGONAL SUPERIOR DERECHA.
                                 Jugador1.MoveUpRight();
                                 break;
-                            case ConsoleKey.NumPad1: // MOVIMIENTO HACIA LA DIAGONAL INFERIOR IZQUIERDA
+
+                            case ConsoleKey.NumPad1: // MOVIMIENTO HACIA LA DIAGONAL INFERIOR IZQUIERDA.
                                 Jugador1.MoveDownLeft();
                                 break;
-                            case ConsoleKey.NumPad3: // MOVIMIENTO HACIA LA DIAGONAL INFERIOR DERECHA
+                            case ConsoleKey.NumPad3: // MOVIMIENTO HACIA LA DIAGONAL INFERIOR DERECHA.
                                 Jugador1.MoveDownRight();
                                 break;
                             case ConsoleKey.P:
@@ -217,14 +223,13 @@ namespace Proyecto_Jerobel
                             Jugador1.Inmortal();
                             break;
 
-
                     }
 
                         Jugador1.CogeItem();
 
                     foreach (I_Enemigos enemigos in GeneradorEnemy.Enemigos)
                     {
-                        enemigos.Mover();
+                        enemigos.Move();
                     }
 
                     TableroGeneral.Display(Jugador1.x, Jugador1.y); // DIBUJAMOS EL TABLERO EN LAS POSCIONES DEL JUGADOR

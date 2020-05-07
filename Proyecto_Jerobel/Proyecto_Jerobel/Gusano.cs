@@ -12,8 +12,8 @@ namespace Proyecto_Jerobel
         public int x { get; set; }
         public int y { get; set; }
 
-        bool right;
-        bool left;
+        bool right; // MOVIMIENTO DERECHA
+        bool left; // MOVIMIENTO IZQUIERDA
 
         public Gusano(Jugador J)
         {
@@ -29,42 +29,42 @@ namespace Proyecto_Jerobel
 
         } 
 
-        public void Mover()
+        public void Move()
         {
 
 
 
-            mapa.celdas[x, y].enemigo = null;
-                    if (mapa.isSafe(x+1, y) == true && mapa.celdas[x + 1, y].isWalkable() == true && right==true)
+            mapa.celdas[x, y].Enemi = null;
+                    if (mapa.isSafe(x+1, y) == true && mapa.celdas[x + 1, y].isWalkable() == true && right==true) // CONDICIONAL DE MOVIMIENTO IZQUIERDO
                     {
                 left = false;
                         x++;
                     }
 
-                    if (mapa.isSafe(x-1, y) == true && mapa.celdas[x - 1, y].isWalkable() == true && left==true)
-                    {
+                    if (mapa.isSafe(x-1, y) == true && mapa.celdas[x - 1, y].isWalkable() == true && left==true) // CONDICIONAL DE MOVIMIENTO DERECHO
+            {
                         x--;
                 right = false;
                     }
 
-            if (mapa.isSafe(x-1, y) == true && mapa.celdas[x - 1, y].isWalkable() == false)
+            if (mapa.isSafe(x-1, y) == true && mapa.celdas[x - 1, y].isWalkable() == false) // DECIDE HACIA DONDE SE MOVERA EL JUGADOR
             {
                 right = true;
                 left = false;
             }
 
-            if (mapa.isSafe(x+1, y) == true && mapa.celdas[x + 1, y].isWalkable() == false)
+            if (mapa.isSafe(x+1, y) == true && mapa.celdas[x + 1, y].isWalkable() == false) // DECIDE HACIA DONDE SE MOVERA EL JUGADOR
             {
                 right = false;
                 left = true;
             }
 
-            if (Jugador1.x == this.x && Jugador1.y == this.y)
+            if (Jugador1.x == this.x && Jugador1.y == this.y) // CONDICION DE RESTAR VIDA AL JUGADOR
             {
                 Jugador1.life = Jugador1.life - 10;
             }
 
-            mapa.celdas[x, y].enemigo = this;
+            mapa.celdas[x, y].Enemi = this;
         }
 
     }

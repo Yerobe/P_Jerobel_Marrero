@@ -105,48 +105,48 @@ namespace Proyecto_Jerobel
 
         public void CalculaVecinos(int x, int y) // CALCULA LOS VECINOS EN RELACIÓN A LOS MUROS
         {
-            celdas[x, y].vecinos = 0;
+            celdas[x, y].Neighbors = 0;
 
             if (x > 0 && y > 0 && celdas[x - 1, y - 1].IsWall())
             {
-                celdas[x, y].vecinos++;
+                celdas[x, y].Neighbors++;
             }
 
             if (y > 0 && celdas[x, y - 1].IsWall())
             {
-                celdas[x, y].vecinos++;
+                celdas[x, y].Neighbors++;
             }
 
             if (x < celdas.GetLength(0) - 1 && y > 0 && celdas[x + 1, y - 1].IsWall())
             {
-                celdas[x, y].vecinos++;
+                celdas[x, y].Neighbors++;
             }
 
             if (x > 0 && celdas[x - 1, y].IsWall())
             {
-                celdas[x, y].vecinos++;
+                celdas[x, y].Neighbors++;
             }
 
 
             if (x < celdas.GetLength(0) - 1 && celdas[x + 1, y].IsWall())
             {
-                celdas[x, y].vecinos++;
+                celdas[x, y].Neighbors++;
             }
 
 
             if (x > 0 && y < celdas.GetLength(1) - 1 && celdas[x - 1, y + 1].IsWall())
             {
-                celdas[x, y].vecinos++;
+                celdas[x, y].Neighbors++;
             }
 
             if (y < celdas.GetLength(1) - 1 && celdas[x, y + 1].IsWall())
             {
-                celdas[x, y].vecinos++;
+                celdas[x, y].Neighbors++;
             }
 
             if (x < celdas.GetLength(0) - 1 && y < celdas.GetLength(1) - 1 && celdas[x + 1, y + 1].IsWall())
             {
-                celdas[x, y].vecinos++;
+                celdas[x, y].Neighbors++;
             }
             
 
@@ -176,9 +176,9 @@ namespace Proyecto_Jerobel
                 for (int y = 0; y < celdas.GetLength(1); y++)
                 {
 
-                    if (celdas[x, y].vecinos < deletevecinos)
+                    if (celdas[x, y].Neighbors < deletevecinos)
                     {
-                        celdas[x, y].valor = TipoCelda.Floor;
+                        celdas[x, y].Valor = TipoCelda.Floor;
                     }
 
 
@@ -213,7 +213,7 @@ namespace Proyecto_Jerobel
                 for (int j = 0; j < celdas.GetLength(1); j++)
                 {
 
-                    if (celdas[i, j].valor == TipoCelda.Floor)
+                    if (celdas[i, j].Valor == TipoCelda.Floor)
                     {
 
                         Random r = new Random();
@@ -224,8 +224,8 @@ namespace Proyecto_Jerobel
                             int Dureza;
                             Dureza = r.Next(100);
 
-                            celdas[i, j].valor = TipoCelda.Rock;
-                            celdas[i,j].fuerzaRock = Dureza;
+                            celdas[i, j].Valor = TipoCelda.Rock;
+                            celdas[i,j].ForceRock = Dureza;
                             rocasdropeadas = rocasdropeadas + 1;
                         }
                     }
@@ -246,15 +246,15 @@ namespace Proyecto_Jerobel
                 {
                     x = r.Next(this.anchura); //repite valor aleatorio sino salió suelo o si el objeto era distinto de null (ya había un item en esa celda)
                     y = r.Next(this.altura);
-                } while (celdas[x, y].valor != TipoCelda.Floor || celdas[x, y].objeto != null);
+                } while (celdas[x, y].Valor != TipoCelda.Floor || celdas[x, y].objectt != null);
 
                 if (r.Next(100) < 50) //50% de monedas y 50% de pociones
                 {
-                    celdas[x, y].objeto = new Pocion();
+                    celdas[x, y].objectt = new Pocion();
                 }
                 else
                 {
-                    celdas[x, y].objeto = new Moneda();
+                    celdas[x, y].objectt = new Moneda();
 
                 }
 
@@ -270,9 +270,9 @@ namespace Proyecto_Jerobel
             {
                 x = r.Next(this.anchura); //repite valor aleatorio sino salió suelo o si el objeto era distinto de null (ya había un item en esa celda)
                 y = r.Next(this.altura);
-            } while (celdas[x, y].valor != TipoCelda.Rock);
+            } while (celdas[x, y].Valor != TipoCelda.Rock);
 
-            celdas[x, y].objeto = new Llave();
+            celdas[x, y].objectt = new Llave();
         }
 
         public void putDiamond(int quantity) // DIBUJA DIAMANTES
@@ -285,9 +285,9 @@ namespace Proyecto_Jerobel
                 {
                     x = r.Next(this.anchura); //repite valor aleatorio sino salió suelo o si el objeto era distinto de null (ya había un item en esa celda)
                     y = r.Next(this.altura);
-                } while (celdas[x, y].valor != TipoCelda.Floor || celdas[x, y].objeto != null);
+                } while (celdas[x, y].Valor != TipoCelda.Floor || celdas[x, y].objectt != null);
 
-                celdas[x, y].objeto = new Diamante();
+                celdas[x, y].objectt = new Diamante();
             }
                
         }
@@ -302,9 +302,9 @@ namespace Proyecto_Jerobel
                 {
                     x = r.Next(this.anchura); //repite valor aleatorio sino salió suelo o si el objeto era distinto de null (ya había un item en esa celda)
                     y = r.Next(this.altura);
-                } while (celdas[x, y].valor != TipoCelda.Floor);
+                } while (celdas[x, y].Valor != TipoCelda.Floor);
 
-                celdas[x, y].valor = TipoCelda.Blacksmith;
+                celdas[x, y].Valor = TipoCelda.Blacksmith;
             }
            
         }
@@ -318,9 +318,9 @@ namespace Proyecto_Jerobel
             {
                 x = r.Next(this.anchura); //repite valor aleatorio sino salió suelo o si el objeto era distinto de null (ya había un item en esa celda)
                 y = r.Next(this.altura);
-            } while (celdas[x, y].valor != TipoCelda.Floor);
+            } while (celdas[x, y].Valor != TipoCelda.Floor);
 
-            celdas[x, y].valor = TipoCelda.Exit;
+            celdas[x, y].Valor = TipoCelda.Exit;
 
             x_salida = x;
             y_salida = y;
@@ -356,7 +356,7 @@ namespace Proyecto_Jerobel
 
                 for (int j = 0; j <= celdas.GetLength(1) - 1; j++)
                 {
-                    celdas[i, j].valor = TipoCelda.Wall; // PONE TODO EL MAPA CON MUROS
+                    celdas[i, j].Valor = TipoCelda.Wall; // PONE TODO EL MAPA CON MUROS
 
 
                 }
@@ -366,7 +366,7 @@ namespace Proyecto_Jerobel
             y = altura / 2; // CENTRAR Y
 
             // turn the select mapp cell into floor
-            celdas[x, y].valor = TipoCelda.Floor;
+            celdas[x, y].Valor = TipoCelda.Floor;
             countfloors = 1;
 
             Random r = new Random();
@@ -418,7 +418,7 @@ namespace Proyecto_Jerobel
 
                 }
                 countfloors = countfloors + 1;
-                celdas[x, y].valor = TipoCelda.Floor;
+                celdas[x, y].Valor = TipoCelda.Floor;
             }
 
 

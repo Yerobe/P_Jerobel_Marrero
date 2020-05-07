@@ -28,16 +28,16 @@ namespace Proyecto_Jerobel
 
         }
 
-        public void Mover()
+        public void Move()
         {
 
             
 
-            mapa.celdas[x, y].enemigo = null;
+            mapa.celdas[x, y].Enemi = null;
 
-            if (turno == false)
+            if (turno == false) // MOVIMIENTO DEL ENEMIGO
             {
-                if (mapa.isSafe(x+1, y) == true && mapa.celdas[x + 1, y].isWalkable() == true)
+                if (mapa.isSafe(x+1, y) == true && mapa.celdas[x + 1, y].isWalkable() == true) // MOVIMIENTO DERECHA
                 {
                     if (Jugador1.x > this.x)
                     {
@@ -45,7 +45,7 @@ namespace Proyecto_Jerobel
                     }
                 }
 
-                if (mapa.isSafe(x-1, y) == true && mapa.celdas[x - 1, y].isWalkable() == true)
+                if (mapa.isSafe(x-1, y) == true && mapa.celdas[x - 1, y].isWalkable() == true) // MOVIMIENTO IZQUIERDA
                 {
                     if (Jugador1.x < this.x)
                     {
@@ -53,7 +53,7 @@ namespace Proyecto_Jerobel
                     }
                 }
 
-                if (mapa.isSafe(x, y-1) == true && mapa.celdas[x, y - 1].isWalkable() == true)
+                if (mapa.isSafe(x, y-1) == true && mapa.celdas[x, y - 1].isWalkable() == true) // MOVIMIENTO ABAJO
                 {
                     if (Jugador1.y < this.y)
                     {
@@ -61,7 +61,7 @@ namespace Proyecto_Jerobel
                     }
                 }
 
-                if (mapa.isSafe(x, y+1) == true && mapa.celdas[x, y + 1].isWalkable() == true)
+                if (mapa.isSafe(x, y+1) == true && mapa.celdas[x, y + 1].isWalkable() == true) // MOVIMIENTO ARRIBA
                 {
                     if (Jugador1.y > this.y)
                     {
@@ -70,14 +70,14 @@ namespace Proyecto_Jerobel
                 }
             }
 
-            if (Jugador1.x == this.x && Jugador1.y == this.y)
+            if (Jugador1.x == this.x && Jugador1.y == this.y) // RESTAR VIDA AL JUGADOR EN CASO DE COLISION
             {
                 Jugador1.life = Jugador1.life - 10;
                 turno = true;
 
 
             }
-            if (turno == true)
+            if (turno == true) // CONDICIONAL DE MOVIMIENTO, POR LO QUE SI ESTA COLISIONA DURANTE 10 TURNOS NO SE MOVERÁ
             {
                 nturno--;
             }
@@ -89,7 +89,7 @@ namespace Proyecto_Jerobel
 
 
 
-            mapa.celdas[x, y].enemigo = this;
+            mapa.celdas[x, y].Enemi = this;
         }
 
     }
